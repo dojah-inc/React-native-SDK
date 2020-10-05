@@ -5575,9 +5575,12 @@ react-is@^16.12.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-"react-native-dojah@link:..":
-  version "0.0.0"
-  uid ""
+react-native-dojah@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-dojah/-/react-native-dojah-0.0.1.tgz#dd695dab985496f70988b1edaf57919f27754438"
+  integrity sha512-T4HrZukSI+FUvmKdmsxD6QzAY+2Hd6xRxyXMlc/7alm0gD9lSGRcP3n3Gg0fFvbYH5nBMP+K4VqoOSSxDocBOQ==
+  dependencies:
+    react-native-webview "10.8.2"
 
 react-native-webview@10.8.2:
   version "10.8.2"
