@@ -17,6 +17,19 @@ or with `yarn`
 yarn add react-native-dojah
 ```
 
+## Other required installations (make sure to follow the instructions in the react-native-webview documentation)
+### See https://github.com/react-native-webview/react-native-webview/issues/140#issuecomment-574185464
+```sh
+npm install react-native-webview --save
+```
+
+or with `yarn`
+
+```sh
+yarn add react-native-webview
+```
+
+
 ## Usage
 
 ```jsx

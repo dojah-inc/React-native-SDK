@@ -34,8 +34,7 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint .",
-    "postinstall": "react-native link react-native-webview"
+    "lint": "eslint ."
   },
   "peerDependencies": {
     "react": "^16.13.1",
