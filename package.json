@@ -1,7 +1,6 @@
 {
   "name": "react-native-dojah",
   "version": "0.0.1",
-  "private": true,
   "main": "lib/index.js",
   "repository": {
     "type": "git",
