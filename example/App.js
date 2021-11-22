@@ -19,20 +19,28 @@ const App = () => {
   const publicKey = 'test_pk_OvAQ5aAhwATSKPzOX5vB1Fbv8';
 
   /**
-   * @param {String} type
+   *  This is the widget type you'd like to load
+   *  (go to your dashboard at
+   *  https://dojah.io/dashboard to enable different
+   *  widget types)
+   */
+  const type = 'financial';
+
+  /**
+   * @param {String} responseType
    * This method receives the type
    * The type can only be one of:
    * loading, begin, success, error, close
    * @param {String} data
    * This is the data from doja
    */
-  const response = (type, data) => {
-    console.log(type, data);
-    if (type === 'success') {
-    } else if (type === 'error') {
-    } else if (type === 'close') {
-    } else if (type === 'begin') {
-    } else if (type === 'loading') {
+  const response = (responseType, data) => {
+    console.log(responseType, data);
+    if (responseType === 'success') {
+    } else if (responseType === 'error') {
+    } else if (responseType === 'close') {
+    } else if (responseType === 'begin') {
+    } else if (responseType === 'loading') {
     }
   };
   /**
@@ -58,6 +66,7 @@ const App = () => {
       <Dojah
         appID={appID}
         publicKey={publicKey}
+        type={type}
         response={response}
         outerContainerStyle={outerContainerStyle}
         style={style}
