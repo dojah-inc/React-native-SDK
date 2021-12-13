@@ -23,10 +23,18 @@ yarn add react-native-dojah
 npm install react-native-webview --save
 ```
 
-or with `yarn`
-
+# On Android
 ```sh
-yarn add react-native-webview
+// Add the camera permission: 
+<uses-permission android:name="android.permission.CAMERA" />
+// Add the modify audio settings permission:
+<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+```
+
+# On iOS
+```sh
+permissions_path = '../node_modules/react-native-permissions/ios'
+pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
 ```
 
 

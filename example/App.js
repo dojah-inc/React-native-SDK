@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Dojah from 'react-native-dojah';
+import {checkMultiple, PERMISSIONS} from 'react-native-permissions';
 
 const App = () => {
   /**
@@ -59,8 +60,25 @@ const App = () => {
    */
   const innerContainerStyle = {};
 
-  // The Doja library accepts 3 props and
-  // initiliazes the doja widget and connect process
+  const [granted, setGranted] = useState(false);
+
+  useEffect(() => {
+    checkMultiple([PERMISSIONS.ANDROID.CAMERA, PERMISSIONS.IOS.CAMERA]).then(
+      (statuses) => {
+        console.log('Camera', statuses[PERMISSIONS.ANDROID.CAMERA]);
+        console.log('FaceID', statuses[PERMISSIONS.IOS.CAMERA]);
+        setGranted(
+          statuses[PERMISSIONS.ANDROID.CAMERA] === 'granted' ||
+            statuses[PERMISSIONS.IOS.CAMERA] === 'granted',
+        );
+      },
+    );
+  }, []);
+
+  if (!granted) {
+    return null;
+  }
+
   return (
     <>
       <Dojah
