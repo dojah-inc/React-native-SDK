@@ -1,6 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useCallback} from 'react';
+import {TouchableOpacity, Text} from 'react-native';
 import Dojah from 'react-native-dojah';
-import {checkMultiple, PERMISSIONS} from 'react-native-permissions';
+import {
+  check,
+  requestMultiple,
+  openSettings,
+  PERMISSIONS,
+  RESULTS,
+} from 'react-native-permissions';
 
 const App = () => {
   /**
@@ -9,7 +16,7 @@ const App = () => {
    * https://dojah.io/dashboard
    * to create an app and retrieve it)
    */
-  const appID = '5f772c87d30341003e0c8523';
+  const appID = '6000604fb87ea60035ef41bb';
 
   /**
    *  This is your account public key
@@ -17,7 +24,7 @@ const App = () => {
    *  https://dojah.io/dashboard to
    *  retrieve it. You can also regenerate one)
    */
-  const publicKey = 'test_pk_OvAQ5aAhwATSKPzOX5vB1Fbv8';
+  const publicKey = 'test_pk_TO6a57RT0v5QyhZmhbuLG8nZI';
 
   /**
    *  This is the widget type you'd like to load
@@ -25,7 +32,7 @@ const App = () => {
    *  https://dojah.io/dashboard to enable different
    *  widget types)
    */
-  const type = 'link';
+  const type = 'liveness';
 
   /**
    * @param {String} responseType
@@ -62,11 +69,45 @@ const App = () => {
 
   const [granted, setGranted] = useState(false);
 
-  useEffect(() => {
-    checkMultiple([PERMISSIONS.ANDROID.CAMERA, PERMISSIONS.IOS.CAMERA]).then(
+  const requestPermission = useCallback(() => {
+    check(PERMISSIONS.ANDROID.CAMERA || PERMISSIONS.IOS.CAMERA)
+      .then((result) => {
+        switch (result) {
+          case RESULTS.GRANTED:
+            console.log('The permission is granted');
+            setGranted(true);
+            break;
+          case RESULTS.UNAVAILABLE:
+            console.log(
+              'This feature is not available (on this device / in this context)',
+            );
+            break;
+          case RESULTS.BLOCKED:
+            console.log('The permission is denied and not requestable anymore');
+            openSettings().catch(() => console.warn('cannot open settings'));
+            break;
+          case RESULTS.DENIED:
+            console.log(
+              'The permission has not been requested / is denied but requestable',
+            );
+            makeRequest();
+            break;
+          case RESULTS.LIMITED:
+            console.log('The permission is limited: some actions are possible');
+            makeRequest();
+            break;
+        }
+      })
+      .catch((e) => {
+        console.log('Error when checking for permissions', e);
+      });
+  }, [makeRequest]);
+
+  const makeRequest = useCallback(() => {
+    requestMultiple([PERMISSIONS.ANDROID.CAMERA, PERMISSIONS.IOS.CAMERA]).then(
       (statuses) => {
-        console.log('Camera', statuses[PERMISSIONS.ANDROID.CAMERA]);
-        console.log('FaceID', statuses[PERMISSIONS.IOS.CAMERA]);
+        console.log('ANDROID Camera', statuses[PERMISSIONS.ANDROID.CAMERA]);
+        console.log('IOS Camera', statuses[PERMISSIONS.IOS.CAMERA]);
         setGranted(
           statuses[PERMISSIONS.ANDROID.CAMERA] === 'granted' ||
             statuses[PERMISSIONS.IOS.CAMERA] === 'granted',
@@ -75,22 +116,44 @@ const App = () => {
     );
   }, []);
 
-  if (!granted) {
-    return null;
+  if (!granted && ['liveness', 'verification', 'identity'].includes(type)) {
+    const buttonStyle = {
+      width: '50%',
+      height: 100,
+      marginTop: '50%',
+      marginLeft: '25%',
+      backgroundColor: 'blue',
+      elevation: 10,
+      justifyContent: 'center',
+      borderRadius: 30,
+    };
+
+    const textStyle = {
+      color: '#FFF',
+      fontSize: 20,
+      textAlign: 'center',
+    };
+
+    return (
+      <TouchableOpacity
+        activeOpacity={0.8}
+        style={buttonStyle}
+        onPress={requestPermission}>
+        <Text style={textStyle}>Request Permissions</Text>
+      </TouchableOpacity>
+    );
   }
 
   return (
-    <>
-      <Dojah
-        appID={appID}
-        publicKey={publicKey}
-        type={type}
-        response={response}
-        outerContainerStyle={outerContainerStyle}
-        style={style}
-        innerContainerStyle={innerContainerStyle}
-      />
-    </>
+    <Dojah
+      appID={appID}
+      publicKey={publicKey}
+      type={type}
+      response={response}
+      outerContainerStyle={outerContainerStyle}
+      style={style}
+      innerContainerStyle={innerContainerStyle}
+    />
   );
 };
 
