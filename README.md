@@ -67,6 +67,19 @@ const App = () => {
    */
   const type = "link";
   /**
+   *  These are the configuration options
+   *  available to you possible options are:
+   *  {debug: BOOL, otp: BOOL, selfie: BOOL}
+   *
+   *  NOTE: The otp and selfie options are only
+   *  available to the `verification` widget
+   */
+  const config = {
+    debug: true,
+    otp: type === 'verification',
+    selfie: type === 'verification',
+  };
+  /**
    * @param {String} type
    * This method receives the type
    * The type can only be one of:
@@ -106,6 +119,7 @@ const App = () => {
       response={response}
       appID={appID}
       publicKey={publicKey}
+      config={config}
       type={type}
       outerContainerStyle={outerContainerStyle}
       style={style}

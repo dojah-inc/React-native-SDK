@@ -35,6 +35,20 @@ const App = () => {
   const type = 'liveness';
 
   /**
+   *  These are the configuration options
+   *  available to you possible options are:
+   *  {debug: BOOL, otp: BOOL, selfie: BOOL}
+   *
+   *  NOTE: The otp and selfie options are only
+   *  available to the `verification` widget
+   */
+  const config = {
+    debug: true,
+    otp: type === 'verification',
+    selfie: type === 'verification',
+  };
+
+  /**
    * @param {String} responseType
    * This method receives the type
    * The type can only be one of:
@@ -149,6 +163,7 @@ const App = () => {
       appID={appID}
       publicKey={publicKey}
       type={type}
+      config={config}
       response={response}
       outerContainerStyle={outerContainerStyle}
       style={style}
