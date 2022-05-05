@@ -25,16 +25,27 @@ npm install react-native-webview --save
 
 # On Android
 ```sh
+// If you would like to use the selfie, or id screens, add:
 // Add the camera permission: 
 <uses-permission android:name="android.permission.CAMERA" />
 // Add the modify audio settings permission:
 <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+// If you would like to use the address screen, add:
+<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 ```
 
 # On iOS
 ```sh
+// If you would like to use the selfie, or id screens, add:
 permissions_path = '../node_modules/react-native-permissions/ios'
 pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
+
+// If you would like to use the address screen, add:
+pod 'Permission-LocationAccuracy', :path => "#{permissions_path}/LocationAccuracy"
+pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways"
+pod 'react-native-geolocation-service', path: '../node_modules/react-native-geolocation-service'
 ```
 
 
@@ -82,6 +93,7 @@ const App = () => {
   const config = {
     debug: true,
     pages: [
+      {page: 'address'},
       {
         page: 'government-data',
         config: {
