@@ -27,6 +27,7 @@ target 'dojah' do
   pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
   pod 'Permission-LocationAccuracy', :path => "#{permissions_path}/LocationAccuracy"
   pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways"
+  pod 'react-native-geolocation-service', path: '../node_modules/react-native-geolocation-service'
 end
 
 target 'dojah-tvOS' do
