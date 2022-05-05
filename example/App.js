@@ -39,6 +39,7 @@ const App = () => {
   const config = {
     debug: true,
     pages: [
+      {page: 'address'},
       {
         page: 'government-data',
         config: {
