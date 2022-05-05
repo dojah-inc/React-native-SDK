@@ -55,5 +55,9 @@
 	<false/>
   <key>NSCameraUsageDescription</key>
   <string>Dojah Example App Needs Permissions To Continue</string>
+  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+  <string>Dojah Example App Needs Your Location To Verify Your Address</string>
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>Dojah Example App Needs Your Location To Verify Your Address</string>
 </dict>
 </plist>

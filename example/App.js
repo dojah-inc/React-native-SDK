@@ -1,13 +1,5 @@
-import React, {useState, useCallback} from 'react';
-import {TouchableOpacity, Text} from 'react-native';
+import React from 'react';
 import Dojah from 'react-native-dojah';
-import {
-  check,
-  requestMultiple,
-  openSettings,
-  PERMISSIONS,
-  RESULTS,
-} from 'react-native-permissions';
 
 const App = () => {
   /**
@@ -120,86 +112,6 @@ const App = () => {
    *  This prop is passed to the WebView `containerStyle` prop
    */
   const innerContainerStyle = {};
-
-  const [granted, setGranted] = useState(false);
-
-  const requestPermission = useCallback(() => {
-    check(PERMISSIONS.ANDROID.CAMERA || PERMISSIONS.IOS.CAMERA)
-      .then((result) => {
-        switch (result) {
-          case RESULTS.GRANTED:
-            console.log('The permission is granted');
-            setGranted(true);
-            break;
-          case RESULTS.UNAVAILABLE:
-            console.log(
-              'This feature is not available (on this device / in this context)',
-            );
-            break;
-          case RESULTS.BLOCKED:
-            console.log('The permission is denied and not requestable anymore');
-            openSettings().catch(() => console.warn('cannot open settings'));
-            break;
-          case RESULTS.DENIED:
-            console.log(
-              'The permission has not been requested / is denied but requestable',
-            );
-            makeRequest();
-            break;
-          case RESULTS.LIMITED:
-            console.log('The permission is limited: some actions are possible');
-            makeRequest();
-            break;
-        }
-      })
-      .catch((e) => {
-        console.log('Error when checking for permissions', e);
-      });
-  }, [makeRequest]);
-
-  const makeRequest = useCallback(() => {
-    requestMultiple([PERMISSIONS.ANDROID.CAMERA, PERMISSIONS.IOS.CAMERA]).then(
-      (statuses) => {
-        console.log('ANDROID Camera', statuses[PERMISSIONS.ANDROID.CAMERA]);
-        console.log('IOS Camera', statuses[PERMISSIONS.IOS.CAMERA]);
-        setGranted(
-          statuses[PERMISSIONS.ANDROID.CAMERA] === 'granted' ||
-            statuses[PERMISSIONS.IOS.CAMERA] === 'granted',
-        );
-      },
-    );
-  }, []);
-
-  if (
-    !granted &&
-    ['liveness', 'verification', 'identitfication'].includes(type)
-  ) {
-    const buttonStyle = {
-      width: '50%',
-      height: 100,
-      marginTop: '50%',
-      marginLeft: '25%',
-      backgroundColor: 'blue',
-      elevation: 10,
-      justifyContent: 'center',
-      borderRadius: 30,
-    };
-
-    const textStyle = {
-      color: '#FFF',
-      fontSize: 20,
-      textAlign: 'center',
-    };
-
-    return (
-      <TouchableOpacity
-        activeOpacity={0.8}
-        style={buttonStyle}
-        onPress={requestPermission}>
-        <Text style={textStyle}>Request Permissions</Text>
-      </TouchableOpacity>
-    );
-  }
 
   return (
     <Dojah
