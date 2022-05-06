@@ -8,7 +8,7 @@ const App = () => {
    * https://dojah.io/dashboard
    * to create an app and retrieve it)
    */
-  const appID = '6000604fb87ea60035ef41bb';
+  const appID = '6164163e723cc90036a21349';
 
   /**
    *  This is your account public key
@@ -16,7 +16,7 @@ const App = () => {
    *  https://dojah.io/dashboard to
    *  retrieve it. You can also regenerate one)
    */
-  const publicKey = 'test_pk_TO6a57RT0v5QyhZmhbuLG8nZI';
+  const publicKey = 'prod_pk_Ya5cV1OGG4umCPKZdy7iNA3Bn';
 
   /**
    *  This is the widget type you'd like to load
@@ -87,7 +87,7 @@ const App = () => {
    * This is the data from doja
    */
   const response = (responseType, data) => {
-    console.log(responseType, data);
+    console.log(responseType, JSON.stringify(data));
     if (responseType === 'success') {
     } else if (responseType === 'error') {
     } else if (responseType === 'close') {
