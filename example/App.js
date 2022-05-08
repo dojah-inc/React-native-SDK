@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Dojah from 'react-native-dojah';
 
 const App = () => {
@@ -113,6 +113,10 @@ const App = () => {
    *  This prop is passed to the WebView `containerStyle` prop
    */
   const innerContainerStyle = {};
+
+  useEffect(() => {
+    Dojah.hydrate(appID, publicKey);
+  }, [appID, publicKey]);
 
   return (
     <Dojah

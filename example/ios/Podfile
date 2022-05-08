@@ -28,6 +28,7 @@ target 'dojah' do
   pod 'Permission-LocationAccuracy', :path => "#{permissions_path}/LocationAccuracy"
   pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways"
   pod 'react-native-geolocation-service', path: '../node_modules/react-native-geolocation-service'
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-async-storage/async-storage'
 end
 
 target 'dojah-tvOS' do
