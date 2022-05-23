@@ -87,7 +87,7 @@ const App = () => {
    * This is the data from doja
    */
   const response = (responseType, data) => {
-    console.log(responseType, JSON.stringify(data));
+    console.log('Response:', responseType, JSON.stringify(data));
     if (responseType === 'success') {
     } else if (responseType === 'error') {
     } else if (responseType === 'close') {
