@@ -17,10 +17,11 @@ or with `yarn`
 yarn add react-native-dojah
 ```
 
+Required Packages
 ## Other required installations (make sure to follow the instructions in the react-native-webview documentation)
 ### See https://github.com/react-native-webview/react-native-webview/issues/140#issuecomment-574185464
 ```sh
-npm install react-native-webview --save
+npm install react-native-webview react-native-permissions react-native-geolocation-service @react-native-async-storage/async-storage --save
 ```
 
 # On Android
@@ -93,6 +94,7 @@ const App = () => {
   const config = {
     debug: true,
     pages: [
+      {page: 'phone-number', config: {verification: false}},
       {page: 'address'},
       {
         page: 'government-data',
