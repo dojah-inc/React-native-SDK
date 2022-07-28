@@ -5676,10 +5676,10 @@ react-is@^16.12.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-native-dojah@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/react-native-dojah/-/react-native-dojah-0.3.0.tgz#e3ebb4fdbbc75c85607a18b71dad89c49dc504fe"
-  integrity sha512-LElpnAIiDpGwP+xyfIXEpgaLGZ/RLJ5v6cqUXB0A2xPON7NSYxISK7eCbGVYtgpzAh/OPIfp2Ow/XfuAgxfORQ==
+react-native-dojah@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/react-native-dojah/-/react-native-dojah-0.3.2.tgz#f1c7e4e33557613ef887de29a2c16c482ce4d25c"
+  integrity sha512-mu++2kjE3Ss+23rBrQXty6hGcg6qH99PIO3QQ4CsjOb8+BTQOtXx+evZYHiE4wLDaPUJ7D53tdciFBhquRVg9w==
 
 react-native-geolocation-service@^5.3.0-beta.4:
   version "5.3.0-beta.4"
