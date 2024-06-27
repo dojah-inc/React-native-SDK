@@ -8,7 +8,7 @@ const App = () => {
    * https://dojah.io/dashboard
    * to create an app and retrieve it)
    */
-  const appID = '6000604fb87ea60035ef41bb';
+  const appID = '';
 
   /**
    *  This is your account public key
@@ -16,7 +16,7 @@ const App = () => {
    *  https://dojah.io/dashboard to
    *  retrieve it. You can also regenerate one)
    */
-  const publicKey = 'prod_pk_7jspvKP2FMkjkSZx1qnbgiMWy';
+  const publicKey = '';
 
   /**
    *  This is the widget type you'd like to load
@@ -24,7 +24,7 @@ const App = () => {
    *  https://dojah.io/dashboard to enable different
    *  widget types)
    */
-  const type = 'liveness';
+  const type = 'custom';
 
   /**
    *  These are the configuration options
@@ -37,23 +37,8 @@ const App = () => {
    *  available to the `verification` widget
    */
   const config = {
-    debug: true,
-    pages: [
-      {page: 'address'},
-      {
-        page: 'government-data',
-        config: {
-          bvn: true,
-          nin: false,
-          dl: false,
-          mobile: false,
-          otp: false,
-          selfie: false,
-        },
-      },
-      {page: 'selfie'},
-      {page: 'id', config: {passport: false, dl: true}},
-    ],
+    widget_id: '',
+    pages: [],
   };
 
   /**
@@ -78,6 +63,13 @@ const App = () => {
     user_id: '121',
   };
 
+
+  const govData = {
+                  bvn: "",
+                  nin: "",
+                  dl: "",
+                  mobile: ""
+  };
   /**
    * @param {String} responseType
    * This method receives the type
@@ -124,6 +116,7 @@ const App = () => {
       publicKey={publicKey}
       type={type}
       userData={userData}
+      govData={govData}
       metadata={metadata}
       config={config}
       response={response}
