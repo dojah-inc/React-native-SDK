@@ -53,8 +53,8 @@ pod 'react-native-geolocation-service', path: '../node_modules/react-native-geol
 ## Usage
 
 ```jsx
-import React from 'react'
-import Dojah from 'react-native-dojah'
+import React, {useEffect} from 'react';
+import Dojah from 'react-native-dojah';
 
 const App = () => {
   /**
@@ -63,7 +63,7 @@ const App = () => {
    * https://dojah.io/dashboard
    * to create an app and retrieve it)
    */
-  const appID = '6000604fb87ea60035ef41bb';
+  const appID = '';
 
   /**
    *  This is your account public key
@@ -71,7 +71,7 @@ const App = () => {
    *  https://dojah.io/dashboard to
    *  retrieve it. You can also regenerate one)
    */
-  const publicKey = 'test_pk_TO6a57RT0v5QyhZmhbuLG8nZI';
+  const publicKey = '';
 
   /**
    *  This is the widget type you'd like to load
@@ -79,12 +79,12 @@ const App = () => {
    *  https://dojah.io/dashboard to enable different
    *  widget types)
    */
-  const type = 'liveness';
+  const type = 'custom';
 
   /**
    *  These are the configuration options
    *  available to you are:
-   *  {debug: BOOL, pages: ARRAY[{page: STRING, config: OBJECT}]}
+   *  {debug: BOOL, pages: ARRAY[page: STRING, config: OBJECT]}
    *
    *  The config object is as defined below
    *
@@ -92,24 +92,8 @@ const App = () => {
    *  available to the `verification` widget
    */
   const config = {
-    debug: true,
-    pages: [
-      {page: 'phone-number', config: {verification: false}},
-      {page: 'address'},
-      {
-        page: 'government-data',
-        config: {
-          bvn: true,
-          nin: false,
-          dl: false,
-          mobile: false,
-          otp: false,
-          selfie: false,
-        },
-      },
-      {page: 'selfie'},
-      {page: 'id', config: {passport: false, dl: true}},
-    ],
+    widget_id: '',
+    pages: [],
   };
 
   /**
@@ -134,6 +118,13 @@ const App = () => {
     user_id: '121',
   };
 
+
+  const govData = {
+                  bvn: "",
+                  nin: "",
+                  dl: "",
+                  mobile: ""
+  };
   /**
    * @param {String} responseType
    * This method receives the type
@@ -143,7 +134,7 @@ const App = () => {
    * This is the data from doja
    */
   const response = (responseType, data) => {
-    console.log(responseType, data);
+    console.log('Response:', responseType, JSON.stringify(data));
     if (responseType === 'success') {
     } else if (responseType === 'error') {
     } else if (responseType === 'close') {
@@ -170,23 +161,28 @@ const App = () => {
    */
   const innerContainerStyle = {};
 
-  // The Doja library accepts 3 props and
-  // initiliazes the doja widget and connect process
+  useEffect(() => {
+    Dojah.hydrate(appID, publicKey);
+  }, [appID, publicKey]);
+
   return (
     <Dojah
-      response={response}
       appID={appID}
       publicKey={publicKey}
-      config={config}
       type={type}
+      userData={userData}
+      govData={govData}
+      metadata={metadata}
+      config={config}
+      response={response}
       outerContainerStyle={outerContainerStyle}
       style={style}
       innerContainerStyle={innerContainerStyle}
     />
   );
-}
+};
 
-export default App
+export default App;
 
 ```
 
