@@ -1,20 +1,20 @@
 # react-native-dojah
 
-> https://github.com/cjayprime/react-native-dojah
+> https://github.com/YemmyFolayan/react-native-dojah
 
-[![NPM](https://img.shields.io/npm/v/react-native-dojah.svg)](https://www.npmjs.com/package/react-native-dojah) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-native-dojah.svg)](https://www.npmjs.com/package/react-native-dojah-sdk) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 
 ## Install
 
 ```sh
-npm install react-native-dojah --save
+npm install react-native-dojah-sdk --save
 ```
 
 or with `yarn`
 
 ```sh
-yarn add react-native-dojah
+yarn add react-native-dojah-sdk
 ```
 
 Required Packages
@@ -54,7 +54,7 @@ pod 'react-native-geolocation-service', path: '../node_modules/react-native-geol
 
 ```jsx
 import React, {useEffect} from 'react';
-import Dojah from 'react-native-dojah';
+import Dojah from 'react-native-dojah-sdk';
 
 const App = () => {
   /**

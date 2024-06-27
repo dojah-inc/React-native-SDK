@@ -1,15 +1,15 @@
 {
-  "name": "react-native-dojah",
-  "version": "0.3.2",
+  "name": "react-native-dojah-sdk",
+  "version": "0.0.1",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cjayprime/react-native-dojah.git"
+    "url": "git+https://github.com/YemmyFolayan/react-native-dojah.git"
   },
   "bugs": {
-    "url": "https://github.com/cjayprime/react-native-dojah/issues"
+    "url": "https://github.com/YemmyFolayan/react-native-dojah/issues"
   },
-  "homepage": "https://github.com/cjayprime/react-native-dojah#readme",
+  "homepage": "https://github.com/YemmyFolayan/react-native-dojah#readme",
   "engines": {
     "node": ">=10"
   },
