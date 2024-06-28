@@ -4,12 +4,12 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YemmyFolayan/react-native-dojah.git"
+    "url": "git+https://github.com/dojah-inc/React-native-SDK.git"
   },
   "bugs": {
-    "url": "https://github.com/YemmyFolayan/react-native-dojah/issues"
+    "url": "https://github.com/dojah-inc/React-native-SDK/issues"
   },
-  "homepage": "https://github.com/YemmyFolayan/react-native-dojah#readme",
+  "homepage": "https://github.com/dojah-inc/React-native-SDK#readme",
   "engines": {
     "node": ">=10"
   },
