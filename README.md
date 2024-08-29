@@ -8,13 +8,13 @@
 ## Install
 
 ```sh
-npm install react-native-dojah-sdk --save
+npm install react-native-dojah-sdks --save
 ```
 
 or with `yarn`
 
 ```sh
-yarn add react-native-dojah-sdk
+yarn add react-native-dojah-sdks
 ```
 
 Required Packages
